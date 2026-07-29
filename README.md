@@ -189,7 +189,7 @@ This project follows the structure and dataset used in **Baraa Khatib Salkini's*
 🔗 Source: [SQL Data Analyst Portfolio Project](https://youtu.be/2jGhQpbzHes?si=PSOcH7UpXmSSfw5f)
 
 ---
-
+**Implemented By:** Umair Asad 
 ---
 
 ## 📬 Contact & Connect
