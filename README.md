@@ -190,6 +190,10 @@ This project follows the structure and dataset used in **Baraa Khatib Salkini's*
 
 ---
 
-## 📬 Contact
+---
 
-Feel free to reach out or check out my other data projects on my [GitHub profile](https://github.com/Umair-Asad2001).
+## 📬 Contact & Connect
+
+**Email:** [your.email@example.com](mailto:your.email@example.com)
+* **Portfolio:** [yourportfolio.com](https://yourportfolio.com)
+* **Location:** Wah Cantt, Pakistan *(Open to Relocation Opportunities)*
