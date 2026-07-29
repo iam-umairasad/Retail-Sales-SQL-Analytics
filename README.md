@@ -194,6 +194,6 @@ This project follows the structure and dataset used in **Baraa Khatib Salkini's*
 
 ## 📬 Contact & Connect
 
-**Email:** [your.email@example.com](iam.umairasad@gmail.com)
+**Email:** [iam.umairasad@gmail.com](iam.umairasad@gmail.com)
 * **Portfolio:** [yourportfolio.com](https://yourportfolio.com)
 * **Location:** Wah Cantt, Pakistan *(Open to Relocation Opportunities)*
