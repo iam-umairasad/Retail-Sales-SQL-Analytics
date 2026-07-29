@@ -4,7 +4,8 @@
 
 ![SQL Server](https://img.shields.io/badge/Database-SQL%20Server-CC2927?logo=microsoftsqlserver&logoColor=white)
 ![T-SQL](https://img.shields.io/badge/Language-T--SQL-blue)
-![Status](https://img.shields.io/badge/Status-Complete-brightgreen)
+![Focus](https://img.shields.io/badge/Focus-Business%20Intelligence-4B8BBE)
+![Portfolio](https://img.shields.io/badge/Type-Portfolio%20Project-informational)
 
 ---
 
@@ -39,15 +40,19 @@ That last row is the kind of finding this project is built to produce automatica
 ```
 RetailSalesAnalytics/
 │
-├── database_backup/
-│   └── RetailSalesAnalytics.bak        # Full SQL Server backup — restore for instant setup
+├── Datasets/
+│   ├── csv-files/
+│   │   ├── customer_behavior_report.csv    # Exported output of the customer behavior reporting view
+│   │   ├── dim_customers.csv               # Customer profiles (18,484 rows)
+│   │   ├── dim_products.csv                # Product catalog (295 rows)
+│   │   ├── fact_sales.csv                  # Transaction-level sales (60,398 rows)
+│   │   └── product_performance_report.csv  # Exported output of the product performance reporting view
+│   └── RetailSalesAnalytics.bak            # Full SQL Server backup — restore for instant setup
 │
-├── datasets/
-│   ├── dim_customers.csv               # Customer profiles (18,484 rows)
-│   ├── dim_products.csv                # Product catalog (295 rows)
-│   └── fact_sales.csv                  # Transaction-level sales (60,398 rows)
+├── Docs/
+│   └── project_roadmap.png                 # Visual project roadmap
 │
-├── scripts/
+├── Scripts/
 │   ├── 00_db_setup_and_ingestion.sql       # Phase 0 — Database + table creation, BULK INSERT loading
 │   ├── 01_database_exploration.sql         # Phase 1 — Schema audit + data quality enforcement
 │   ├── 02_dimentions_exploration.sql       # Phase 2 — Dimension/category auditing
@@ -59,14 +64,9 @@ RetailSalesAnalytics/
 │   ├── 08_commulative_analysis.sql         # Phase 8 — Running totals & moving averages
 │   ├── 09_performance_analysis.sql         # Phase 9 — Year-over-year performance benchmarking
 │   ├── 10_part_to_whole_analysis.sql       # Phase 10 — Proportional / percentage-of-total analysis
-│   └── 11_data_segmentation_analysis.sql   # Phase 11 — Customer & product segmentation
-│
-├── reports/
-│   ├── customer_behavior_report.sql        # Phase 12 — Final view: 360° customer analytics
-│   └── Product_Performance_Report.sql      # Phase 12 — Final view: product performance & inventory health
-│
-├── assets/
-│   └── project_roadmap.png                 # Visual project roadmap
+│   ├── 11_data_segmentation_analysis.sql   # Phase 11 — Customer & product segmentation
+│   ├── customer_behavior_report.sql        # Phase 12 — Final view: customer behavior report
+│   └── Product_Performance_Report.sql      # Phase 12 — Final view: product performance report
 │
 └── README.md
 ```
@@ -76,13 +76,13 @@ RetailSalesAnalytics/
 ## 🚀 Getting Started
 
 **Option A — Recommended (Fastest): Database Restoration**
-1. Copy `RetailSalesAnalytics.bak` to the local SQL Server default backup directory.
+1. Copy `RetailSalesAnalytics.bak` (found in `Datasets/`) to the local SQL Server default backup directory.
 2. Open SQL Server Management Studio (SSMS): Right-click **Databases** → **Restore Database...** → Select **Device** → Browse and select the `.bak` file → Click **OK**.
-3. The fully populated `RetailSalesAnalytics` database is now restored. Skip directly to executing analysis scripts starting from `01_database_exploration.sql` in `scripts/` folder.
+3. The fully populated `RetailSalesAnalytics` database is now restored. Skip directly to executing analysis scripts starting from `01_database_exploration.sql` in the `Scripts/` folder.
 
 **Option B — From scratch: Run the ingestion script**
 1. Open `00_db_setup_and_ingestion.sql`.
-2. Update the three `BULK INSERT ... FROM 'C:\...'` file paths to reference the exact local directory containing the source CSV files in `datasets/`.
+2. Update the three `BULK INSERT ... FROM 'C:\...'` file paths to reference the exact local directory containing the source CSV files in `Datasets/csv-files/`.
 3. Run the script in SQL Server Management Studio (SSMS) — it drops any existing copy of the database, rebuilds the schema, and loads all three tables.
 
 ---
@@ -153,6 +153,7 @@ The Product Performance view aggregates `fact_sales` down to one row per product
 Initial customer grouping in script `11` relied on simple rule-based thresholds that created coverage gaps for edge cases. In the production reporting view (`v_customer_behavior_report`), this logic was overhauled into multi-factor layered `CASE` statements combining tenure (`months_since_first_purchase`), inactivity windows (`recency`), and lifetime volume (`total_sales`). 
 
 This structural update ensures high-value accounts experiencing recent inactivity are accurately identified as "Core VIP (Cooling Down)" rather than falling into default broad buckets or misclassifying customer risk profiles.
+
 ---
 
 ## 🛠️ Technical Skills Demonstrated
